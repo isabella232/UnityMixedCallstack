@@ -26,7 +26,7 @@ namespace UnityMixedCallstack
             _enabled = true;
             DisposeStreams();
 
-            if (_debugPane != null)
+            if (_debugPane == null)
             {
                 IVsOutputWindow outWindow = Package.GetGlobalService(typeof(SVsOutputWindow)) as IVsOutputWindow;
                 Guid debugPaneGuid = VSConstants.GUID_OutWindowDebugPane;
