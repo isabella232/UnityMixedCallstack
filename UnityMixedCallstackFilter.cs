@@ -143,16 +143,17 @@ namespace UnityMixedCallstack
                     var tokens = line.Split(delemiter);
 
                     //should never happen, but lets be safe and not get array out of bounds if it does
-                    if (tokens.Length != 3)
+                    if (tokens.Length != 4)
                         continue;
 
                     var startip = tokens[0];
                     var endip = tokens[1];
                     var description = tokens[2];
+                    var file = tokens[3];
 
                     var startiplong = ulong.Parse(startip, NumberStyles.HexNumber);
                     var endipint = ulong.Parse(endip, NumberStyles.HexNumber);
-                    _rangesSortedByIp.Add(new Range() { Name = description, Start = startiplong, End = endipint });
+                    _rangesSortedByIp.Add(new Range() { Name = description, File = file, Start = startiplong, End = endipint });
                 }
             }
             catch (Exception ex)
